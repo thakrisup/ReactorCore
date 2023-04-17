@@ -1,0 +1,41 @@
+# Simple configuration file for a small reactor core
+
+# NS per timestep
+DT=10
+# Total number of timesteps
+NUM_TIMESTEPS=10000000
+# Frequency (in timesteps) to display progress
+DISPLAY_PROGRESS_FREQUENCY=100
+# Artificial maximum neutron limit
+MAX_NEUTRONS=1000000
+# Artificial collision probability multiplier
+COLLISION_PROB_MULTIPLYER=1000
+# Frequency (in timesteps) to write reactor state to file
+WRITE_REACTOR_STATE_FREQUENCY=1000
+
+# Size of reactor in metres
+SIZE_X=1
+SIZE_Y=1
+SIZE_Z=1
+
+# Fuel proportion
+FUEL_U235=15%
+FUEL_U238=85%
+
+MODERATOR=WATER
+# Weight of moderator in grams
+MOD_WEIGHT=1000000
+
+# Percentage control rod insertion
+CONTROLROD_1_1=10%
+CONTROLROD_1_3=20%
+CONTROLROD_3_1=20%
+CONTROLROD_3_3=10%
+
+# Type of each channel, defined on row by row basis
+CHANNELROW_0=FUEL,FUEL,FUEL,FUEL,FUEL
+CHANNELROW_1=FUEL,CONTROL,MODERATOR,CONTROL,FUEL
+CHANNELROW_2=FUEL,MODERATOR,NEUTRON,MODERATOR,FUEL
+CHANNELROW_3=FUEL,CONTROL,MODERATOR,CONTROL,FUEL
+CHANNELROW_4=FUEL,FUEL,FUEL,FUEL,FUEL
+

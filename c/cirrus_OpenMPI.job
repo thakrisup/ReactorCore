@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#SBATCH --job-name=Reactor_simpler_smaller
+#SBATCH --time=1:00:00
+#SBATCH --exclusive
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=5
+#SBATCH --ntasks=10
+#SBATCH --cpus-per-task=1
+
+#SBATCH --account=m22oc-s2450923
+#SBATCH --partition=standard
+#SBATCH --qos=standard
+
+module -s intel-compilers-19
+module -s load mpt
+
+cd $SLURM_SUBMIT_DIR
+
+export OMP_NUM_THREADS=1
+
+# MPI : --unbuffered --distribution=block:block --hint=nomultithread
+# OpenMP : --cpu-bind=cores
+srun --unbuffered --distribution=block:block --hint=nomultithread ./reactor config_simple_smaller.txt output_simple_smaller.txt
+gprof reactor > reactor.prof
